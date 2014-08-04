@@ -158,30 +158,30 @@ static int vm_millivolts_986z3_svc[PROFILE_NUM][VL_MAX] = {
 /* 988 Ax SVC table, CP 416M vote VL1 */
 static int vm_millivolts_988ax_svc[PROFILE_NUM][VL_MAX] = {
 	/* PP <= 312, PP<=624, PP<=1066, PP<=1205 */
-	{1050, 1100, 1275, 1350},       /* profile 0 */
-	{1050, 1100, 1125, 1188},       /* profile 1 */
-	{1050, 1100, 1125, 1200},       /* profile 2 */
-	{1050, 1100, 1138, 1213},       /* profile 3 */
-	{1050, 1100, 1150, 1238},       /* profile 4 */
-	{1050, 1100, 1175, 1263},       /* profile 5 */
-	{1050, 1100, 1200, 1288},       /* profile 6 */
-	{1050, 1138, 1225, 1313},       /* profile 7 */
-	{1050, 1138, 1275, 1350},       /* profile 8 */
+	{1000, 1050, 1100, 1275, 1350},       /* profile 0 */
+	{1000, 1050, 1100, 1125, 1188},       /* profile 1 */
+	{1000, 1050, 1100, 1125, 1200},       /* profile 2 */
+	{1000, 1050, 1100, 1138, 1213},       /* profile 3 */
+	{1000, 1050, 1100, 1150, 1238},       /* profile 4 */
+	{1000, 1050, 1100, 1175, 1263},       /* profile 5 */
+	{1000, 1050, 1100, 1200, 1288},       /* profile 6 */
+	{1000, 1050, 1138, 1225, 1313},       /* profile 7 */
+	{1000, 1050, 1138, 1275, 1350},       /* profile 8 */
 
 };
 
 /* 986 Ax SVC table, CP 624M vote VL2 */
 static int vm_millivolts_986ax_svc[PROFILE_NUM][VL_MAX] = {
 	/* PP <= 312, PP<=624, PP<=1066, PP<=1205 */
-	{1050, 1138, 1275, 1350},	/* profile 0 */
-	{1050, 1100, 1100, 1200},	/* profile 1 */
-	{1050, 1100, 1113, 1200},	/* profile 2 */
-	{1050, 1100, 1138, 1213},	/* profile 3 */
-	{1050, 1100, 1150, 1238},	/* profile 4 */
-	{1050, 1100, 1175, 1263},	/* profile 5 */
-	{1050, 1100, 1200, 1288},	/* profile 6 */
-	{1050, 1138, 1225, 1313},	/* profile 7 */
-	{1050, 1138, 1275, 1350},	/* profile 8 */
+	{1000, 1050, 1100, 1275, 1350},       /* profile 0 */
+	{1000, 1050, 1100, 1125, 1188},       /* profile 1 */
+	{1000, 1050, 1100, 1125, 1200},       /* profile 2 */
+	{1000, 1050, 1100, 1138, 1213},       /* profile 3 */
+	{1000, 1050, 1100, 1150, 1238},       /* profile 4 */
+	{1000, 1050, 1100, 1175, 1263},       /* profile 5 */
+	{1000, 1050, 1100, 1200, 1288},       /* profile 6 */
+	{1000, 1050, 1138, 1225, 1313},       /* profile 7 */
+	{1000, 1050, 1138, 1275, 1350},       /* profile 8 */
 };
 /* default CP/MSA required PMU DVC VL */
 static unsigned int cp_pmudvc_lvl = VL1;
@@ -518,10 +518,10 @@ static struct dvfs_rail_component vm_rail_comp_tbl_z1z2[VM_RAIL_MAX] = {
 };
 
 static unsigned long freqs_cmb_z3[VM_RAIL_MAX][VL_MAX] = {
-	{ 312000, 624000, 1066000, 1205000 },	/* CORE */
-	{ 312000, 312000, 533000, 533000 },	/* DDR/AXI */
-	{ 0	, 416000, 624000, 624000 },	/* GC */
-	{ 208000, 312000, 416000, 416000 }	/* VPU */
+	{ 156000, 312000, 624000, 1066000, 1205000 },	/* CORE */
+	{ 312000, 312000, 312000, 533000,  533000 },	/* DDR/AXI */
+	{ 0,      0,      416000, 624000,  624000 },	/* GC */
+	{ 208000, 208000, 312000, 416000,  416000 }		/* VPU */
 };
 
 static struct dvfs_rail_component vm_rail_comp_tbl_z3[VM_RAIL_MAX] = {
@@ -536,10 +536,10 @@ static struct dvfs_rail_component vm_rail_comp_tbl_z3[VM_RAIL_MAX] = {
 };
 
 static unsigned long freqs_cmb_ax[VM_RAIL_MAX][VL_MAX] = {
-	{ 624000, 624000, 1066000, 1205000 },	/* CORE */
-	{ 312000, 312000, 312000, 533000 },	/* DDR/AXI */
-	{ 0, 416000, 624000, 624000 },	/* GC */
-	{ 0, 312000, 416000, 416000 }	/* VPU */
+	{ 312000, 624000, 624000, 1066000, 1205000 },	/* CORE */
+	{ 312000, 312000, 312000, 312000,  533000 },	/* DDR/AXI */
+	{ 0,      0,      416000, 624000,  624000 },	/* GC */
+	{ 0,      0,      312000, 416000,  416000 }		/* VPU */
 };
 
 static struct dvfs_rail_component vm_rail_comp_tbl_ax[VM_RAIL_MAX] = {
@@ -681,10 +681,10 @@ static struct dvfs_rail pxa988_dvfs_rail_apsub_sleep = {
 #define MAX_FREQ_NUM	20
 /* Each components' freq number should be the same with voltage level number */
 static unsigned long component_freqs[VM_RAIL_MAX][MAX_FREQ_NUM] = {
-	{ 312000, 624000, 1066000, 1205000 },		/* CORE */
-	{ 156000, 312000, 533000 },			/* DDR/AXI */
-	{ 156000, 312000, 416000, 624000 },		/* GC */
-	{ 156000, 208000, 312000, 416000 }		/* VPU */
+	{ 156000, 312000, 624000, 1066000, 1205000 },		/* CORE */
+	{ 78000,  156000, 312000, 533000 },			/* DDR/AXI */
+	{ 78000,  156000, 312000, 416000, 624000 },		/* GC */
+	{ 78000,  156000, 208000, 312000, 416000 }		/* VPU */
 };
 
 static unsigned int pxa988_get_freq_num(const char *name)
@@ -717,33 +717,33 @@ static unsigned int pxa988_get_freq_num(const char *name)
  */
 
 static int component_voltage[][MAX_RAIL_NUM][LEVEL_END] = {
-		/* 312,  624,    1066,   1205 */
+		/* 156,   312,    624,    1066,   1205 */
 	[CORE] = {
-		{LEVEL0, LEVEL0, LEVEL2, LEVEL2,}, /* AP Active voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* AP LPM voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* APSUB idle voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* APSUB sleep voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL2, LEVEL2,}, /* AP Active voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* AP LPM voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* APSUB idle voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* APSUB sleep voltage */
 	},
-		/* 156,  312,    533 */
+		/* 78,    156,    312,    533 */
 	[DDR_AXI] = {
-		{LEVEL0, LEVEL0, LEVEL3,}, /* AP Active voltage */
-		{LEVEL0, LEVEL0, LEVEL3,}, /* AP LPM voltage */
-		{LEVEL0, LEVEL0, LEVEL3,}, /* APSUB idle voltage */
-		{LEVEL0, LEVEL0, LEVEL0,}, /* APSUB sleep voltage */
-	},
-		/* 156,  312,    416,    624 */
-	[GC] = {
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL1 }, /* AP Active voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL1 }, /* AP LPM voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL1 }, /* APSUB idle voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL0 }, /* APSUB sleep voltage */
-	},
-		/* 156,  208,    312,    416 */
-	[VPU] = {
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL1,}, /* AP Active voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL1,}, /* AP LPM voltage */
-		{LEVEL0, LEVEL0, LEVEL0, LEVEL1,}, /* APSUB idle voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL3,}, /* AP Active voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL3,}, /* AP LPM voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL3,}, /* APSUB idle voltage */
 		{LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* APSUB sleep voltage */
+	},
+		/* 78,    156,    312,    416,    624 */
+	[GC] = {
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL1 }, /* AP Active voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL1 }, /* AP LPM voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL1 }, /* APSUB idle voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL0 }, /* APSUB sleep voltage */
+	},
+		/* 78,    156,    208,    312,    416 */
+	[VPU] = {
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL1,}, /* AP Active voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL1,}, /* AP LPM voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL1,}, /* APSUB idle voltage */
+		{LEVEL0, LEVEL0, LEVEL0, LEVEL0, LEVEL0,}, /* APSUB sleep voltage */
 	},
 };
 

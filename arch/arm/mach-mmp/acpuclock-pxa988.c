@@ -445,6 +445,14 @@ static struct pxa988_cpu_opt pxa988_op_array_z1z2[] = {
 
 static struct pxa988_cpu_opt pxa988_op_array_z3ax_lpddr400[] = {
 	{
+		.pclk = 156,
+		.l2clk = 156,
+		.pdclk = 78,
+		.baclk = 78,
+		.periphclk = 39,
+		.ap_clk_sel = AP_CLK_SRC_PLL1_624,
+	},
+	{
 		.pclk = 312,
 		.l2clk = 312,
 		.pdclk = 156,
@@ -479,6 +487,14 @@ static struct pxa988_cpu_opt pxa988_op_array_z3ax_lpddr400[] = {
 };
 
 static struct pxa988_cpu_opt pxa988_op_array_z3ax_lpddr533[] = {
+	{
+		.pclk = 156,
+		.l2clk = 156,
+		.pdclk = 78,
+		.baclk = 78,
+		.periphclk = 39,
+		.ap_clk_sel = AP_CLK_SRC_PLL1_624,
+	},
 	{
 		.pclk = 312,
 		.l2clk = 312,
@@ -552,6 +568,13 @@ static struct pxa988_ddr_axi_opt lpddr400_axi_oparray_z1z2[] = {
 
 static struct pxa988_ddr_axi_opt lpddr400_axi_oparray_z3ax[] = {
 	{
+		.dclk = 78,
+		.ddr_tbl_index = 1,
+		.aclk = 39,
+		.ddr_clk_sel = DDR_AXI_CLK_SRC_PLL1_624,
+		.axi_clk_sel = DDR_AXI_CLK_SRC_PLL1_624,
+	},
+	{
 		.dclk = 156,
 		.ddr_tbl_index = 1,
 		.aclk = 78,
@@ -574,6 +597,13 @@ static struct pxa988_ddr_axi_opt lpddr400_axi_oparray_z3ax[] = {
 	},
 };
 static struct pxa988_ddr_axi_opt lpddr533_axi_oparray_z3ax[] = {
+	{
+		.dclk = 78,
+		.ddr_tbl_index = 1,
+		.aclk = 39,
+		.ddr_clk_sel = DDR_AXI_CLK_SRC_PLL1_624,
+		.axi_clk_sel = DDR_AXI_CLK_SRC_PLL1_624,
+	},
 	{
 		.dclk = 156,
 		.ddr_tbl_index = 1,
