@@ -35,7 +35,7 @@ script:
 # 'source build.sh <<< "${nbasebuildsh}"'
 # 'export zipfile#="${zipfile}"'
 #
-- export CROSS_COMPILE="$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/arm-eabi-"
+- export CROSS_COMPILE="$(pwd)/../arm-eabi-${!GCC_VERSION}.x/bin/arm-eabi-"
 - sudo find / -name libfl.so.2
 - export LD_LIBRARY_PATH="/usr/local/lib"
 - sudo ldconfig
