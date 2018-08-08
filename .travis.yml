@@ -36,16 +36,16 @@ script:
 # 'export zipfile#="${zipfile}"'
 #
 - export CROSS_COMPILE="$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/arm-eabi-"
-- echo ${CROSS_COMPILE}
+- ls ${CROSS_COMPILE}
 - sudo find / -name libfl.so.2
 - export LD_LIBRARY_PATH="/usr/local/lib"
 - sudo ldconfig
 - echo $LD_LIBRARY_PATH
 #- source build.sh <<< "${nbasebuildsh}"
 - export ARCH=arm && export SUBARCH=arm
-- make clean && make mrproper V=1
+- make clean && make mrproper
 - make pxa986_lt023g_werewolf_defconfig
-- make -j 4 V=1
+- make -j 4 V=1 CROSS_COMPILE=${CROSS_COMPILE}
 
 deploy:
   provider: releases
