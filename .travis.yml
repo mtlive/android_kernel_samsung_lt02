@@ -35,12 +35,12 @@ script:
 - export LD_LIBRARY_PATH="/usr/local/lib"
 - sudo ldconfig
 - echo $LD_LIBRARY_PATH
-- echo $PATH
+- ls "$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/"
 #- source build.sh <<< "${nbasebuildsh}"
 - export ARCH=arm && export SUBARCH=arm
-- make clean && make mrproper
+- make clean && make mrproper V=1
 - make pxa986_lt023g_werewolf_defconfig
-- make -j 4 V=1 CROSS_COMPILE=${CROSS_COMPILE}
+- make -j 4 V=1
 
 deploy:
   provider: releases
