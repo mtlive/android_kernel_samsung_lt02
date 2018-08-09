@@ -38,7 +38,7 @@ script:
 - ls "$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/"
 #- source build.sh <<< "${nbasebuildsh}"
 - export ARCH=arm && export SUBARCH=arm
-- make clean && make mrproper V=1
+- make clean && make mrproper V=1 -d
 - make pxa986_lt023g_werewolf_defconfig
 - make -j 4 V=1
 
