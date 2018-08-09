@@ -33,6 +33,7 @@ script:
 - export CROSS_COMPILE="$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/arm-eabi-"
 - export PATH=$PATH:"$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/"
 - export LD_LIBRARY_PATH="/usr/local/lib"
+- gcc -v
 - sudo ldconfig
 - echo $LD_LIBRARY_PATH
 - ls "$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/"
