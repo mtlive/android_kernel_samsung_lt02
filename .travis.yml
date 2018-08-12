@@ -40,6 +40,8 @@ script:
 - make pxa986_lt023g_werewolf_defconfig
 - make -j 4 #V=1
 
+- find . -name <name> -print | zip modules.zip -@
+
 deploy:
   provider: releases
   skip_cleanup: true
@@ -47,6 +49,7 @@ deploy:
   file_glob: true
   file: "arch/${ARCH}/boot/*Image*"
   file: "./out/modules/*"
+  file: "modules.zip"
   on:
   #  tags: true
     all_branches: true
