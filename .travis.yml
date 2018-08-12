@@ -47,9 +47,9 @@ deploy:
   skip_cleanup: true
   api_key: ${KEY}
   file_glob: true
-  file: "arch/${ARCH}/boot/*Image*"
-  file: "./out/modules/*"
-  file: "modules.zip"
+  file: 
+    - "arch/${ARCH}/boot/*Image*"
+    - "modules.zip"
   on:
   #  tags: true
     all_branches: true
