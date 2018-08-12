@@ -40,7 +40,7 @@ script:
 - make pxa986_lt023g_werewolf_defconfig
 - make -j 4 #V=1
 
-- find . -name <name> -print | zip modules.zip -@
+- find . -name "*.ko" -print | zip modules.zip -@
 
 deploy:
   provider: releases
