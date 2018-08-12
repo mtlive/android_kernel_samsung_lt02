@@ -54,7 +54,7 @@ else
 INCLUDE += -I$(AQROOT)/hal/os/linux/kernel
 endif
 
-CFLAGS += $(INCLUDE) -Werror -ansi -Os
+CFLAGS += $(INCLUDE) -Werror -ansi #-Os
 
 ################################################################################
 # Describe object files.
