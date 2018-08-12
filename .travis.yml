@@ -7,14 +7,14 @@ dist: trusty
 #- docker run -e "BRANCH_NAME=cm-11.0" -v "/home/user/lineage:/srv/src" -v "/home/user/zips:/srv/zips" -v "/home/user/logs:/srv/logs" -v "/home/user/cache:/srv/ccache" lineageos4microg/docker-lineage-cicd
 language: c
 cache: ccache
-env: GCC_VERSION=7
+env: GCC_VERSION=6
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - gcc-7
-    - g++-7
+    - gcc-6
+    - g++-6
     - flex
 script:
 # Install dependency
