@@ -34,6 +34,8 @@ script:
 - export PATH=$PATH:"$(pwd)/../arm-eabi-${GCC_VERSION}.x/bin/"
 - export LD_LIBRARY_PATH="/usr/local/lib"
 - sudo ldconfig
+#revert battery LPM changes
+- curl -sL https://github.com/mtlive/android_kernel_samsung_lt02/raw/master/arch/arm/mach-mmp/board-lt02-battery.c -o arch/arm/mach-mmp/board-lt02-battery.c
 #- source build.sh <<< "${nbasebuildsh}"
 - export ARCH=arm && export SUBARCH=arm
 - make clean && make mrproper #V=1
