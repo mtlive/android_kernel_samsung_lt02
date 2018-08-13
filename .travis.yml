@@ -15,7 +15,8 @@ addons:
     packages:
     - gcc-6
     - g++-6
-    - flex
+    - flex 
+    - lzop
 script:
 # Install dependency
 - sudo apt-get install -y dpkg
@@ -42,7 +43,7 @@ script:
 - make pxa986_lt023g_werewolf_defconfig
 - make -j 4 #V=1
 
-- find . -name "*.ko" -print | zip modules.zip -@
+- find . -name "*.ko" -print | zip -j modules.zip -@
 
 deploy:
   provider: releases
