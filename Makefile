@@ -242,7 +242,7 @@ export KCONFIG_CONFIG
 CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 	  else if [ -x /bin/bash ]; then echo /bin/bash; \
 	  else echo sh; fi ; fi)
-GRAPHITE     = -fgraphite -fgraphite-identity -floop-interchange -ftree-loop-distribution -floop-strip-mine -floop-block -ftree-loop-linear
+
 HOSTCC       = gcc
 HOSTCXX      = g++
 HOSTCFLAGS   = -pipe -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu89
@@ -345,10 +345,12 @@ KALLSYMS	= scripts/kallsyms
 PERL		= perl
 CHECK		= sparse
 
+GRAPHITE     = #-fgraphite -fgraphite-identity -floop-interchange -ftree-loop-distribution -floop-strip-mine -floop-block -ftree-loop-linear
+
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-KERNELFLAGS     = -pipe -Ofast -fno-schedule-insns2 -ffast-math -mtune=cortex-a9 -march=armv7-a -mcpu=cortex-a9 -mfpu=neon -marm -mno-unaligned-access  -ffunction-sections -Wl,--gc-sections -fno-asynchronous-unwind-tables -Wl,--strip-all $(GRAPHITE) 
-MODFLAGS        = -DMODULE $(KERNELFLAGS)
+KERNELFLAGS     = -pipe -mtune=cortex-a9 -march=armv7-a -mcpu=cortex-a9 -mfpu=neon -marm -mno-unaligned-access  -ffunction-sections -Wl,--gc-sections -fno-asynchronous-unwind-tables -Wl,--strip-all $(GRAPHITE) 
+MODFLAGS        = $(KERNELFLAGS)
 CFLAGS_MODULE   = $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  =
@@ -570,7 +572,7 @@ endif
 ifdef CONFIG_CC_OPTIMIZE_DEFAULT
 KBUILD_CFLAGS += -O2
 else
-KBUILD_CFLAGS	+= -Ofast -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize
+KBUILD_CFLAGS	+= -O3 -fno-tree-vectorize
 endif
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
