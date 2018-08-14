@@ -1776,7 +1776,7 @@ gckKERNEL_PrintFlagedProcessDB(
     gcsDATABASE_RECORD_PTR record;
     gctPOINTER fp;
     gctSIZE_T fs;
-    char buf[982];
+    char buf[1000];
     gctINT i, len = 0;
     gcuVIDMEM_NODE_PTR node;
     gctINT j;
