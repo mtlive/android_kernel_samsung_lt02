@@ -41,7 +41,7 @@ script:
 - export ARCH=arm && export SUBARCH=arm
 - make clean && make mrproper #V=1
 #- make pxa986_lt023g_werewolf_defconfig
-- cat arch/arm/configs/pxa986_lt023g_defconfig >> android_kernel_samsung_lt02/arch/arm/configs/pxa986_lt02_defconfig 
+- cat arch/arm/configs/pxa986_lt023g_defconfig >> arch/arm/configs/pxa986_lt02_defconfig 
 - make pxa986_lt02_defconfig 
 - make -j 4 #V=1
 
