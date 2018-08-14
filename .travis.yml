@@ -40,7 +40,9 @@ script:
 #- source build.sh <<< "${nbasebuildsh}"
 - export ARCH=arm && export SUBARCH=arm
 - make clean && make mrproper #V=1
-- make pxa986_lt023g_werewolf_defconfig
+#- make pxa986_lt023g_werewolf_defconfig
+- make pxa986_lt02_defconfig 
+- make pxa986_lt023g_defconfig 
 - make -j 4 #V=1
 
 - find . -name "*.ko" -print | zip -j modules.zip -@
