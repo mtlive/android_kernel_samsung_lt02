@@ -27,28 +27,25 @@ script:
 - sudo apt-get update
 - sudo apt install libfl2
 
-- git remote add fork git://github.com/gr8nole/android_kernel_samsung_lt02-common
-- git fetch fork
-- git checkout -b gr8nole fork/kerNole
-- git push origin gr8nole
+- git clone git://github.com/kumajaya/android_kernel_samsung_lt02
+- cd android_kernel_samsung_lt02
 
 # getting UberTC
 - git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
 # 'source build.sh <<< "${nbasebuildsh}"'
 # 'export zipfile#="${zipfile}"'
-- git checkout -b snapshot 0d1d7fc32
 - export CROSS_COMPILE="$(pwd)/../arm-eabi-${GCC_VERSION}/bin/arm-eabi-"
 - export PATH=$PATH:"$(pwd)/../arm-eabi-${GCC_VERSION}/bin/"
 - export LD_LIBRARY_PATH="/usr/local/lib"
 - sudo ldconfig
 #revert battery LPM changes
-- curl -sL https://github.com/mtlive/android_kernel_samsung_lt02/raw/master/arch/arm/mach-mmp/board-lt02-battery.c -o arch/arm/mach-mmp/board-lt02-battery.c
+#- curl -sL https://github.com/mtlive/android_kernel_samsung_lt02/raw/master/arch/arm/mach-mmp/board-lt02-battery.c -o arch/arm/mach-mmp/board-lt02-battery.c
 #- source build.sh <<< "${nbasebuildsh}"
 - export ARCH=arm && export SUBARCH=arm
 - make clean && make mrproper #V=1
 #- make pxa986_lt023g_werewolf_defconfig
-- cat arch/arm/configs/pxa986_lt023g_defconfig >> arch/arm/configs/pxa986_lt02_defconfig 
-- make pxa986_lt02_defconfig 
+- cat arch/arm/configs/blackhawk_lt023g_defconfig  >> arch/arm/configs/blackhawk_lt02_defconfig  
+- make blackhawk_lt02_defconfig
 - make -j 4 #V=1
 
 - find . -name "*.ko" -print | zip -j modules.zip -@
