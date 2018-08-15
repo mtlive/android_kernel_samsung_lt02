@@ -28,7 +28,7 @@ script:
 - sudo apt install libfl2
 
 - git clone git://github.com/Sabsabsab/android_kernel_samsung_degas3g
-- cp -r android_kernel_samsung_degas3g/ ./
+- cp -r android_kernel_samsung_degas3g/* .
 
 # getting UberTC
 - git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
