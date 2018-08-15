@@ -27,10 +27,10 @@ script:
 - sudo apt-get update
 - sudo apt install libfl2
 
-- git remote add fork github.com/gr8nole/android_kernel_samsung_lt02-common
+- git remote add fork git://github.com/gr8nole/android_kernel_samsung_lt02-common
 - git fetch fork
 - git checkout -b gr8nole fork/kerNole
-- git push
+- git push origin gr8nole
 
 # getting UberTC
 - git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
