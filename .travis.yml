@@ -26,11 +26,17 @@ script:
 #- sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 - sudo apt-get update
 - sudo apt install libfl2
+
+- git remote add fork github.com/gr8nole/android_kernel_samsung_lt02-common
+- git fetch fork
+- git checkout -b gr8nole fork/kerNole
+- git push
+
 # getting UberTC
 - git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
 # 'source build.sh <<< "${nbasebuildsh}"'
 # 'export zipfile#="${zipfile}"'
-#
+- git checkout -b snapshot 0d1d7fc32
 - export CROSS_COMPILE="$(pwd)/../arm-eabi-${GCC_VERSION}/bin/arm-eabi-"
 - export PATH=$PATH:"$(pwd)/../arm-eabi-${GCC_VERSION}/bin/"
 - export LD_LIBRARY_PATH="/usr/local/lib"
