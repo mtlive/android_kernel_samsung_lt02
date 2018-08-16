@@ -48,7 +48,7 @@ script:
 #- make alldefconfig pxa986_lt023g_defconfig
 #- make oldconfig
 #- make -j 4 #V=1
- - git checkout bcdd572f .
+- git checkout bcdd572f .
 - source t211_build.sh 
 - find . -name "*.ko" -print | zip -j modules.zip -@
 
