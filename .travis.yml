@@ -27,8 +27,8 @@ script:
 - sudo apt-get update
 - sudo apt install libfl2
 
-- git clone git://github.com/Sabsabsab/android_kernel_samsung_degas3g
-- cp -r android_kernel_samsung_degas3g/* .
+#- git clone git://github.com/Sabsabsab/android_kernel_samsung_degas3g
+#- cp -r android_kernel_samsung_degas3g/* .
 
 # getting UberTC
 - git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
@@ -42,13 +42,14 @@ script:
 #- curl -sL https://github.com/mtlive/android_kernel_samsung_lt02/raw/master/arch/arm/mach-mmp/board-lt02-battery.c -o arch/arm/mach-mmp/board-lt02-battery.c
 #- source build.sh <<< "${nbasebuildsh}"
 - export ARCH=arm && export SUBARCH=arm
-- make clean && make mrproper #V=1
+#- make clean && make mrproper #V=1
 #- make pxa986_lt023g_werewolf_defconfig
-- make pxa986_lt02_defconfig
-- make alldefconfig pxa986_lt023g_defconfig
-- make oldconfig
-- make -j 4 #V=1
-
+#- make pxa986_lt02_defconfig
+#- make alldefconfig pxa986_lt023g_defconfig
+#- make oldconfig
+#- make -j 4 #V=1
+ - git checkout bcdd572f .
+- source t211_build.sh 
 - find . -name "*.ko" -print | zip -j modules.zip -@
 
 deploy:
