@@ -13,8 +13,8 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - gcc-4.9
-    - g++-4.9
+    - gcc-7
+    - g++-7
     - flex 
     - lzop
 script:
@@ -34,7 +34,9 @@ script:
 - git reset --hard bcdd572fb3cc065e7cce9e0d3ae26e69d9ef761c
 
 # getting UberTC
-- git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
+#- git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
+- wget http://download1585.mediafire.com/2sjaxsrbeheg/7rahdi2ot2e6mdg/arm-linux-gnueabi-linaro_4.8.4-2014.11-build_2014_11_25.tar.xz
+- tar -xJf -C ../arm-eabi-${GCC_VERSION}
 # 'source build.sh <<< "${nbasebuildsh}"'
 # 'export zipfile#="${zipfile}"'
 - export CROSS_COMPILE="$(pwd)/../arm-eabi-${GCC_VERSION}/bin/arm-eabi-"
