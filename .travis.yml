@@ -48,7 +48,7 @@ script:
 #- make alldefconfig pxa986_lt023g_defconfig
 #- make oldconfig
 #- make -j 4 #V=1
-- git reset --hard bcdd572f 
+- git reset --hard bcdd572fb3cc065e7cce9e0d3ae26e69d9ef761c
 - source t211_build.sh 
 - find ./out/ -name "*.ko" -print | zip -j modules.zip -@
 
