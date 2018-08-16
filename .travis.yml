@@ -29,6 +29,9 @@ script:
 
 #- git clone git://github.com/Sabsabsab/android_kernel_samsung_degas3g
 #- cp -r android_kernel_samsung_degas3g/* .
+- git clone --branch=4.4.2 https://github.com/mtlive/android_kernel_samsung_lt02.git mtlive/android_kernel_samsung_lt02
+- cd mtlive/android_kernel_samsung_lt02
+- git reset --hard bcdd572fb3cc065e7cce9e0d3ae26e69d9ef761c
 
 # getting UberTC
 - git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
@@ -48,7 +51,6 @@ script:
 #- make alldefconfig pxa986_lt023g_defconfig
 #- make oldconfig
 #- make -j 4 #V=1
-- git reset --hard bcdd572fb3cc065e7cce9e0d3ae26e69d9ef761c
 - source t211_build.sh 
 - find ./out/ -name "*.ko" -print | zip -j modules.zip -@
 
