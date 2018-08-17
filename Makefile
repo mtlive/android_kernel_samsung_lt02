@@ -572,7 +572,7 @@ endif
 ifdef CONFIG_CC_OPTIMIZE_DEFAULT
 KBUILD_CFLAGS += -O2
 else
-KBUILD_CFLAGS	+= -Ofast $(GRAPHITE)
+KBUILD_CFLAGS	+= -Ofast $(GRAPHITE) -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -fsingle-precision-constant
 endif
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
