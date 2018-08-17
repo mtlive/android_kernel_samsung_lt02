@@ -34,10 +34,8 @@ script:
 #- git reset --hard bcdd572fb3cc065e7cce9e0d3ae26e69d9ef761c
 
 # getting UberTC
-#- git clone  --depth=1 "https://bitbucket.org/matthewdalex/arm-eabi-${GCC_VERSION}" "../arm-eabi-${GCC_VERSION}"
-- wget http://rapidleech.online/files/arm-cortex_a9-linux-gnueabihf-linaro_4.7.4-2014.06-build_2014_09_13.tar.xz
-- tar -xJf arm-cortex_a9-linux-gnueabihf-linaro_4.7.4-2014.06-build_2014_09_13.tar.xz
-- mv ./arm-cortex_a9-linux-gnueabihf-linaro_4.7.4-2014.06 ../arm-eabi-${GCC_VERSION} 
+- mkdir "../arm-eabi-${GCC_VERSION}"
+- svn checkout --depth=1 https://github.com/Christopher83/linaro_toolchains_2014/branches/2014.06/arm-cortex_a9-linux-gnueabihf-linaro_4.7.4-2014.06 "../arm-eabi-${GCC_VERSION}"
 # 'source build.sh <<< "${nbasebuildsh}"'
 # 'export zipfile#="${zipfile}"'
 - export CROSS_COMPILE="$(pwd)/../arm-eabi-${GCC_VERSION}/bin/arm-cortex_a9-linux-gnueabihf-"
