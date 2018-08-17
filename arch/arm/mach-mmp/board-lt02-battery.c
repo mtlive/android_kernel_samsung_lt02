@@ -132,38 +132,12 @@ static bool sec_chg_gpio_init(void)
 
 static int battery_get_lpm_state(char *str)
 {
-	if (strstr(saved_command_line, "androidboot.mode=charger")) {
-		lpcharge = 1;
-	}
-	else
-		lpcharge = 0;
-	pr_info("%s: Low power charging mode: %d\n", __func__, lpcharge);
-
-#if defined(CONFIG_IGNORE_LPM)
-	lpcharge = 0;
-	pr_info("%s: Overriding low power charging mode! \n", __func__);
-	pr_info("%s: New low power charging mode: %d\n", __func__, lpcharge);
-#endif
-
-	return lpcharge;
-}
-__setup("androidboot.mode=", battery_get_lpm_state);
-
-static int legacy_battery_get_lpm_state(char *str)
-{
 	get_option(&str, &lpcharge);
-
 	pr_info("%s: Low power charging mode: %d\n", __func__, lpcharge);
-
-#if defined(CONFIG_IGNORE_LPM)
-	lpcharge = 0;
-	pr_info("%s: Overriding low power charging mode! \n", __func__);
-	pr_info("%s: New low power charging mode: %d\n", __func__, lpcharge);
-#endif
 
 	return lpcharge;
 }
-__setup("lpcharge=", legacy_battery_get_lpm_state);
+__setup("lpcharge=", battery_get_lpm_state);
 
 static bool sec_bat_is_lpm(void)
 {
@@ -847,7 +821,8 @@ sec_battery_platform_data_t sec_battery_pdata = {
 	.fuel_alert_soc = 1,
 	.repeated_fuelalert = false,
 	.capacity_calculation_type =
-		SEC_FUELGAUGE_CAPACITY_TYPE_DYNAMIC_SCALE,
+		SEC_FUELGAUGE_CAPACITY_TYPE_DYNAMIC_SCALE |
+		SEC_FUELGAUGE_CAPACITY_TYPE_SKIP_ABNORMAL,
 	.capacity_max = 1000,
 	.capacity_min = 0,
 	.capacity_max_margin = 30,
@@ -931,6 +906,5 @@ void __init pxa986_lt02_charger_init(void)
 			ARRAY_SIZE(sec_brdinfo_fuelgauge));
 
 }
-
 
 
