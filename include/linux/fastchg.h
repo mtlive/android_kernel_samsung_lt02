@@ -26,6 +26,7 @@ extern int force_fast_charge;
 
 extern int ac_charge_level;
 
+#define AC_CHARGE_1700 1700
 #define AC_CHARGE_1800 1800	/* default */
 #define AC_CHARGE_1900 1900
 #define AC_CHARGE_2000 2000
