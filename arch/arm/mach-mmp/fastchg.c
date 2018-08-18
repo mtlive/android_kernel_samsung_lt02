@@ -90,12 +90,13 @@ static struct attribute_group force_fast_charge_attr_group = {
 static ssize_t ac_charge_level_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
 	switch (ac_charge_level) {
-		case AC_CHARGE_1800:		return sprintf(buf, "[1800]  1900  2000  2100  2200  2300\n");
-		case AC_CHARGE_1900:		return sprintf(buf, "1800  [1900]  2000  2100  2200  2300\n");
-		case AC_CHARGE_2000:		return sprintf(buf, "1800  1900  [2000]  2100  2200  2300\n");
-		case AC_CHARGE_2100:		return sprintf(buf, "1800  1900  2000  [2100]  2200  2300\n");
-		case AC_CHARGE_2200:		return sprintf(buf, "1800  1900  2000  2100  [2200]  2300\n");
-		case AC_CHARGE_2300:		return sprintf(buf, "1800  1900  2000  2100  2200  [2300]\n");
+		case AC_CHARGE_1700:		return sprintf(buf, "[1700] 1800 1900  2000  2100  2200  2300\n");
+		case AC_CHARGE_1800:		return sprintf(buf, "1700 [1800]  1900  2000  2100  2200  2300\n");
+		case AC_CHARGE_1900:		return sprintf(buf, "1700  1800  [1900]  2000  2100  2200  2300\n");
+		case AC_CHARGE_2000:		return sprintf(buf, "1700  1800  1900  [2000]  2100  2200  2300\n");
+		case AC_CHARGE_2100:		return sprintf(buf, "1700  1800  1900  2000  [2100]  2200  2300\n");
+		case AC_CHARGE_2200:		return sprintf(buf, "1700  1800  1900  2000  2100  [2200]  2300\n");
+		case AC_CHARGE_2300:		return sprintf(buf, "1700  1800  1900  2000  2100  2200  [2300]\n");
 		default:			return sprintf(buf, "Custom : %dmA\n",ac_charge_level);
 	}
 }
@@ -117,6 +118,7 @@ static ssize_t ac_charge_level_store(struct kobject *kobj, struct kobj_attribute
 	else {
 
 		switch (new_ac_charge_level) {
+			case AC_CHARGE_1700:
 			case AC_CHARGE_1800:
 			case AC_CHARGE_1900:
 			case AC_CHARGE_2000:
