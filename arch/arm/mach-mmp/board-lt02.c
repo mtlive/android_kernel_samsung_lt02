@@ -1918,7 +1918,7 @@ static void emeidkb_8787_set_power(unsigned int on)
 	}
 
 	if (on && !enabled) {
-		regulator_set_voltage(wib_3v3, 3300000, 3300000);
+		regulator_set_voltage(wib_3v3, 3000000, 3000000);
 		regulator_enable(wib_3v3);
 		enabled = 1;
 
